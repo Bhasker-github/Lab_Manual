@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 12: CRUD Operations using Spring Boot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Experiment 12: CRUD Operations using Spring Boot</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment1.html">Back to Experiment 1</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Objective</h2>
+        <p>Implement full CRUD operations in a Spring Boot application.</p>
+
+        <h2>Steps</h2>
+        <ol>
+            <li><strong>Create Entity:</strong> Define a model class for your entity.</li>
+            <pre>
+<code>
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String email;
+
+    // Getters and Setters
+}
+</code>
+            </pre>
+            <li><strong>Create Repository:</strong> Define a repository interface.</li>
+            <pre>
+<code>
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
+}
+</code>
+            </pre>
+            <li><strong>Create Controller:</strong> Define a REST controller for handling requests.</li>
+            <pre>
+<code>
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/customers")
+public class CustomerController {
+    @Autowired
+    private CustomerRepository repository;
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return repository.findAll();
+    }
+
+    @PostMapping
+    public Customer createCustomer(@RequestBody Customer customer) {
+        return repository.save(customer);
+    }
+
+    // Additional CRUD operations can be added
+}
+</code>
+            </pre>
+        </ol>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Full Stack Development Lab Manual</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 1: Installation of Eclipse</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Experiment 1: Installation of Eclipse</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment2.html">Next Experiment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Objective</h2>
+        <p>Install Eclipse IDE for Java Development.</p>
+
+        <h2>Steps</h2>
+        <ol>
+            <li><strong>Download Eclipse:</strong> Visit the <a href="https://www.eclipse.org/downloads/">Eclipse Downloads page</a> and choose the "Eclipse IDE for Java Developers" package.</li>
+            <li><strong>Run the Installer:</strong> Execute the downloaded file and follow the prompts to install Eclipse.</li>
+            <li><strong>Launch Eclipse:</strong> Open Eclipse, set your workspace directory, and start exploring.</li>
+        </ol>
+
+        <h2>Code Example</h2>
+        <pre>
+<code>
+    import java.util.Scanner;
+
+    public class PrimeNumberChecker {
+    
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a number: ");
+            int number = scanner.nextInt();
+    
+            if (isPrime(number)) {
+                System.out.println(number + " is a prime number.");
+            } else {
+                System.out.println(number + " is not a prime number.");
+            }
+    
+            scanner.close();
+        }
+    
+        public static boolean isPrime(int num) {
+            if (num <= 1) {
+                return false; // 0 and 1 are not prime numbers
+            }
+            for (int i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    return false; // Found a divisor, not prime
+                }
+            }
+            return true; // No divisors found, it is prime
+        }
+    }
+</code>
+        </pre>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Full Stack Development Lab Manual</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

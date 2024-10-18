@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 7: Installing and Configuring Hibernate Tools in Eclipse</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Experiment 7: Installing and Configuring Hibernate Tools in Eclipse</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment8.html">Next Experiment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Objective</h2>
+        <p>Learn to set up Hibernate for ORM in your Java applications.</p>
+
+        <h2>Steps</h2>
+        <ol>
+            <li><strong>Install Hibernate:</strong> Add Hibernate dependencies in your <code>pom.xml</code> if using Maven.</li>
+            <li><strong>Configure Hibernate:</strong> Create a <code>hibernate.cfg.xml</code> file in <code>src/main/resources</code>:</li>
+            <pre>
+<code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate-Configuration//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;
+&lt;hibernate-configuration&gt;
+    &lt;session-factory&gt;
+        &lt;property name="hibernate.dialect"&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
+        &lt;property name="hibernate.connection.driver_class"&gt;com.mysql.cj.jdbc.Driver&lt;/property&gt;
+        &lt;property name="hibernate.connection.url"&gt;jdbc:mysql://localhost:3306/banking_system&lt;/property&gt;
+        &lt;property name="hibernate.connection.username"&gt;root&lt;/property&gt;
+        &lt;property name="hibernate.connection.password"&gt;your_password&lt;/property&gt;
+    &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+</code>
+            </pre>
+        </ol>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Full Stack Development Lab Manual</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

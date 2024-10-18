@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 3: Bank Application CUI using Java & JDBC</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Experiment 3: Bank Application CUI using Java & JDBC</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment4.html">Next Experiment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Objective</h2>
+        <p>Create a command-line banking application using Java and JDBC.</p>
+
+        <h2>Features</h2>
+        <ul>
+            <li>Register</li>
+            <li>Login</li>
+            <li>Deposit</li>
+            <li>Withdrawal</li>
+            <li>Balance Enquiry</li>
+        </ul>
+
+        <h2>Code Example</h2>
+        <pre>
+<code>
+import java.sql.*;
+import java.util.Scanner;
+
+public class BankApplication {
+    private static Connection connect() {
+        String url = "jdbc:mysql://localhost:3306/banking_system";
+        String user = "root";
+        String password = "your_password";
+        try {
+            return DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            System.out.println("Connection failed: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Connection conn = connect();
+        if (conn == null) return;
+
+        System.out.println("Welcome to the Bank Application");
+        // Implement functionalities like registration, login, deposit, etc.
+    }
+}
+</code>
+        </pre>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Full Stack Development Lab Manual</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

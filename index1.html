@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Java and Web Development Lab Manual - 12 Experiments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .experiment {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        .toggle-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .toggle-btn:hover {
+            background-color: #2980b9;
+        }
+        .hidden {
+            display: none;
+        }
+        ol {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comprehensive Java and Web Development Lab Manual - 12 Experiments</h1>
+
+    <div class="experiment">
+        <h2>Experiment 1: Installation of Eclipse</h2>
+        <button class="toggle-btn" onclick="toggleContent('eclipse-install')">Show/Hide Steps</button>
+        <div id="eclipse-install" class="hidden">
+            <ol>
+                <li>Visit the official Eclipse website: <a href="https://www.eclipse.org/downloads/" target="_blank">https://www.eclipse.org/downloads/</a></li>
+                <li>Click on "Download Packages" and choose "Eclipse IDE for Java Developers"</li>
+                <li>Select the appropriate version for your operating system (Windows, macOS, or Linux)</li>
+                <li>Once downloaded, extract the ZIP file to your desired location</li>
+                <li>For Windows and Linux: Run the eclipse.exe file</li>
+                <li>For macOS: Drag Eclipse.app to your Applications folder and launch it from there</li>
+                <li>When prompted, choose a workspace directory where your projects will be stored</li>
+                <li>Eclipse will launch, and you're ready to start developing Java applications</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 2: MySQL Installation</h2>
+        <button class="toggle-btn" onclick="toggleContent('mysql-install')">Show/Hide Steps</button>
+        <div id="mysql-install" class="hidden">
+            <ol>
+                <li>Go to the MySQL download page: <a href="https://dev.mysql.com/downloads/mysql/" target="_blank">https://dev.mysql.com/downloads/mysql/</a></li>
+                <li>Select your operating system and download the MySQL installer</li>
+                <li>Run the installer and choose "Custom" setup type</li>
+                <li>Select MySQL Server, Workbench, and Connector/J</li>
+                <li>Click "Next" and "Execute" to download and install the selected products</li>
+                <li>In the configuration step, choose "Development Computer" for the config type</li>
+                <li>Set a root password when prompted</li>
+                <li>Complete the installation and launch MySQL Workbench to verify the installation</li>
+                <li>In Workbench, create a new connection using localhost, port 3306, and the root credentials</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 3: Bank Application CUI using Java & JDBC</h2>
+        <button class="toggle-btn" onclick="toggleContent('bank-cui')">Show/Hide Code</button>
+        <div id="bank-cui" class="hidden">
+            <pre><code>
+import java.sql.*;
+import java.util.Scanner;
+
+public class BankApplication {
+    private static final String URL = "jdbc:mysql://localhost:3306/bankdb";
+    private static final String USER = "root";
+    private static final String PASSWORD = "yourpassword";
+
+    public static void main(String[] args) {
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            createTable(conn);
+            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                System.out.println("\n1. Create Account");
+                System.out.println("2. Check Balance");
+                System.out.println("3. Deposit");
+                System.out.println("4. Withdraw");
+                System.out.println("5. Exit");
+                System.out.print("Enter your choice: ");
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        createAccount(conn, scanner);
+                        break;
+                    case 2:
+                        checkBalance(conn, scanner);
+                        break;
+                    case 3:
+                        deposit(conn, scanner);
+                        break;
+                    case 4:
+                        withdraw(conn, scanner);
+                        break;
+                    case 5:
+                        System.out.println("Thank you for using the Bank Application!");
+                        return;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Other methods (createTable, createAccount, checkBalance, deposit, withdraw) here...
+}
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 4: Design & Style Banking System Web Application using HTML5, CSS3</h2>
+        <button class="toggle-btn" onclick="toggleContent('bank-web-design')">Show/Hide Code</button>
+        <div id="bank-web-design" class="hidden">
+            <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Banking System Web Application&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        /* More CSS styles... */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;div class="container"&gt;
+            &lt;h1&gt;Banking System&lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;!-- More HTML content... --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 5: Validate Bank Web Application using JavaScript</h2>
+        <button class="toggle-btn" onclick="toggleContent('bank-web-validation')">Show/Hide Code</button>
+        <div id="bank-web-validation" class="hidden">
+            <pre><code>
+&lt;script&gt;
+document.getElementById('accountForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var initialDeposit = document.getElementById('initial-deposit').value;
+    
+    var errors = [];
+
+    if (name.length < 2) {
+        errors.push('Name must be at least 2 characters long');
+    }
+    
+    // More validation logic...
+
+    if (errors.length > 0) {
+        alert(errors.join('\n'));
+    } else {
+        alert('Account created successfully!');
+        this.reset();
+    }
+});
+&lt;/script&gt;
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 6: Installing and Configuring Spring Boot in Eclipse</h2>
+        <button class="toggle-btn" onclick="toggleContent('spring-boot-install')">Show/Hide Steps</button>
+        <div id="spring-boot-install" class="hidden">
+            <ol>
+                <li>Open Eclipse IDE</li>
+                <li>Go to Help > Eclipse Marketplace</li>
+                <li>Search for "Spring Tools 4"</li>
+                <li>Click "Install" and follow the installation wizard</li>
+                <li>Restart Eclipse when prompted</li>
+                <li>To create a new Spring Boot project, go to File > New > Other</li>
+                <li>Select Spring Boot > Spring Starter Project</li>
+                <li>Fill in project details and select desired dependencies</li>
+                <li>Click Finish to create the project</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 7: Installing and Configuring Hibernate Tools in Eclipse</h2>
+        <button class="toggle-btn" onclick="toggleContent('hibernate-install')">Show/Hide Steps</button>
+        <div id="hibernate-install" class="hidden">
+            <ol>
+                <li>Open Eclipse IDE</li>
+                <li>Go to Help > Eclipse Marketplace</li>
+                <li>Search for "JBoss Tools"</li>
+                <li>Select "JBoss Tools" and click "Install"</li>
+                <li>In the installation wizard, ensure "Hibernate Tools" is selected</li>
+                <li>Accept the license agreements and click "Finish"</li>
+                <li>Restart Eclipse when prompted</li>
+                <li>To use Hibernate, right-click on your project > Properties</li>
+                <li>Go to Project Facets and select "JPA" (Java Persistence API)</li>
+                <li>Click "Further configuration available..." and select Hibernate as the platform</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 8: Connect Java to a MySQL Database using JDBC [Maven Project]</h2>
+        <button class="toggle-btn" onclick="toggleContent('jdbc-connection')">Show/Hide Code</button>
+        <div id="jdbc-connection" class="hidden">
+            <pre><code>
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;8.0.23&lt;/version&gt;
+&lt;/dependency&gt;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class JdbcConnection {
+    private static final String URL = "jdbc:mysql://localhost:3306/your_database";
+    private static final String USER = "your_username";
+    private static final String PASSWORD = "your_password";
+
+    public static void main(String[] args) {
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            System.out.println("Connected to the database successfully!");
+        } catch (SQLException e) {
+            System.out.println("Connection failed. Error: " + e.getMessage());
+        }
+    }
+}
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 9: Connect Java to a MySQL Database using Hibernate (ORM)</h2>
+        <button class="toggle-btn" onclick="toggleContent('hibernate-connection')">Show/Hide Code</button>
+        <div id="hibernate-connection" class="hidden">
+            <pre><code>
+&lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+    &lt;version&gt;5.4.30.Final&lt;/version&gt;
+&lt;/dependency&gt;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateConnection {
+    public static void main(String[] args) {
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(YourEntity.class)
+                .buildSessionFactory();
+
+        try (Session session = factory.getCurrentSession()) {
+            session.beginTransaction();
+            // Perform database operations here
+            session.getTransaction().commit();
+            System.out.println("Connected to the database successfully!");
+        } catch (Exception e) {
+            System.out.println("Connection failed. Error: " + e.getMessage());
+        } finally {
+            factory.close();
+        }
+    }
+}
+            </code></pre>
+        </div>
+    </div>
+
+    <div class="experiment">
+        <h2>Experiment 10: Create & Insert Data in the Table (Server Side Programming)</h2>
+        <button class="toggle-btn" onclick="toggleContent('create-insert-data')">Show/Hide Code</button>
+        <div id="create-insert-data" class="hidden">
+            <pre><code>
+import java.sql.*;
+
+public class CreateInsertData {
+    private static final String URL = "jdbc:mysql://localhost:3306/your_database";
+    private static final String USER = "your_username";
+    private static final String PASSWORD = "your_password";
+
+    public static void main(String[] args) {
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            // Create table
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), email VARCHAR(50))";
+            try (Statement stmt = conn.createStatement()) {
+                stmt.execute(createTableSQL);
+                System.out.println("Table created successfully");
+            }
+
+            // Insert data
+            String insertDataSQL = "INSERT INTO users (name, email) VALUES (?, ?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(insertDataSQL)) {
+                pstmt.setString(1, "John Doe");
+                pstmt.setString(2, "john@example.com");
+                pstmt.executeUpdate();
+                System.out.println("Data inserted successfully");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<div class="experiment">  
+    <h2>Experiment 11: Retrieve Data from the Table (Server Side Programming)</h2>  
+    <button class="toggle-btn" onclick="toggleContent('retrieve-data')">Show/Hide Code</button>  
+    <div id="retrieve-data" class="hidden">  
+      <pre><code>  
+import java.sql.*;  
+
+public class RetrieveData {  
+ private static final String URL = "jdbc:mysql://localhost:3306/your_database";  
+ private static final String USER = "your_username";  
+ private static final String PASSWORD = "your_password";  
+
+ public static void main(String[] args) {  
+    try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {  
+      String retrieveDataSQL = "SELECT * FROM users";  
+      try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(retrieveDataSQL)) {  
+         while (rs.next()) {  
+            System.out.println("ID: " + rs.getInt("id"));  
+            System.out.println("Name: " + rs.getString("name"));  
+            System.out.println("Email: " + rs.getString("email"));  
+         }  
+      }  
+    } catch (SQLException e) {  
+      e.printStackTrace();  
+    }  
+ }  
+}  
+      </code></pre>  
+    </div>  
+ </div>  
+
+ <div class="experiment">  
+    <h2>Experiment 12: Update and Delete Data in the Table (Server Side Programming)</h2>  
+    <button class="toggle-btn" onclick="toggleContent('update-delete-data')">Show/Hide Code</button>  
+    <div id="update-delete-data" class="hidden">  
+      <pre><code>  
+import java.sql.*;  
+
+public class UpdateDeleteData {  
+ private static final String URL = "jdbc:mysql://localhost:3306/your_database";  
+ private static final String USER = "your_username";  
+ private static final String PASSWORD = "your_password";  
+
+ public static void main(String[] args) {  
+    try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {  
+      // Update data  
+      String updateDataSQL = "UPDATE users SET name = ? WHERE id = ?";  
+      try (PreparedStatement pstmt = conn.prepareStatement(updateDataSQL)) {  
+         pstmt.setString(1, "Jane Doe");  
+         pstmt.setInt(2, 1);  
+         pstmt.executeUpdate();  
+         System.out.println("Data updated successfully");  
+      }  
+
+      // Delete data  
+      String deleteDataSQL = "DELETE FROM users WHERE id = ?";  
+      try (PreparedStatement pstmt = conn.prepareStatement(deleteDataSQL)) {  
+         pstmt.setInt(1, 1);  
+         pstmt.executeUpdate();  
+         System.out.println("Data deleted successfully");  
+      }  
+    } catch (SQLException e) {  
+      e.printStackTrace();  
+    }  
+ }  
+}  
+      </code></pre>  
+    </div>  
+ </div>  
+
+ <script>  
+    function toggleContent(id) {  
+      var content = document.getElementById(id);  
+      if (content.classList.contains("hidden")) {  
+         content.classList.remove("hidden");  
+      } else {  
+         content.classList.add("hidden");  
+      }  
+    }  
+ </script>  
+</body>  
+</html>
