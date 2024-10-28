@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 11: Delete Data from a Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Experiment 11: Delete Data from a Table</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment12.html">Next Experiment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Objective</h2>
+        <p>Implement functionality to delete records from a database table.</p>
+
+        <h2>Steps</h2>
+        <ol>
+            <li><strong>Delete Data:</strong> Use the following SQL command to delete a record from the table.</li>
+            <pre>
+<code>
+DELETE FROM customers WHERE id = 1;
+</code>
+            </pre>
+            <li><strong>Verify Deletion:</strong> Run a SELECT query to ensure the record has been deleted.</li>
+            <pre>
+<code>
+SELECT * FROM customers;
+</code>
+            </pre>
+        </ol>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Full Stack Development Lab Manual</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 5: Validate Bank Web Application using JavaScript</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Experiment 5: Validate Bank Web Application using JavaScript</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment6.html">Next Experiment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Objective</h2>
+        <p>Implement form validation using JavaScript for the banking application.</p>
+
+        <h2>Code Example</h2>
+        <pre>
+<code>
+    /**
+    * Validate email and password.
+    * @param {string} email - The email to validate.
+    * @param {string} password - The password to validate.
+    * @returns {Object} - An object containing validation results.
+    */
+   function validateCredentials(email, password) {
+       const results = {
+           isValid: true,
+           errors: []
+       };
+   
+       // Email validation
+       if (!isValidEmail(email)) {
+           results.isValid = false;
+           results.errors.push("Invalid email format.");
+       }
+   
+       // Password validation
+       if (!isValidPassword(password)) {
+           results.isValid = false;
+           results.errors.push("Password must be at least 8 characters long.");
+       }
+   
+       return results;
+   }
+   
+   /**
+    * Check if the email format is valid.
+    * @param {string} email - The email to validate.
+    * @returns {boolean} - True if valid, false otherwise.
+    */
+   function isValidEmail(email) {
+       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+       return emailRegex.test(email);
+   }
+   
+   /**
+    * Check if the password length is valid.
+    * @param {string} password - The password to check.
+    * @returns {boolean} - True if valid, false otherwise.
+    */
+   function isValidPassword(password) {
+       return password.length >= 8;
+   }
+   
+   // Example usage:
+   const emailInput = "test@example.com"; // Replace with actual input
+   const passwordInput = "password123"; // Replace with actual input
+   
+   const validationResults = validateCredentials(emailInput, passwordInput);
+   
+   if (validationResults.isValid) {
+       console.log("Email and password are valid!");
+   } else {
+       console.log("Validation errors:", validationResults.errors.join(" "));
+   }
+</code>
+        </pre>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Full Stack Development Lab Manual</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

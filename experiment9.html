@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 9: Connect Java to a MySQL Database using Hibernate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Experiment 9: Connect Java to a MySQL Database using Hibernate</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment10.html">Next Experiment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Objective</h2>
+        <p>Use Hibernate ORM to connect Java applications to a MySQL database.</p>
+
+        <h2>Code Example</h2>
+        <pre>
+<code>
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateExample {
+    public static void main(String[] args) {
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(YourEntityClass.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            // Perform operations
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+        }
+    }
+}
+</code>
+        </pre>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Full Stack Development Lab Manual</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

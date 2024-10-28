@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 10: Create & Insert Data in the Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Experiment 10: Create & Insert Data in the Table</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            <li><a href="experiment11.html">Next Experiment</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Objective</h2>
+    <p>Learn to create and insert data into a database table.</p>
+
+    <h2>Steps</h2>
+    <ol>
+        <li><strong>Create a Table:</strong> Use the following SQL command to create a table in your MySQL database.</li>
+        <pre>
+<code>
+CREATE TABLE customers (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100),
+email VARCHAR(100)
+);
+</code>
+        </pre>
+        <li><strong>Insert Data:</strong> Use the following SQL command to insert data into the table.</li>
+        <pre>
+<code>
+INSERT INTO customers (name, email) VALUES ('John Doe', 'john.doe@example.com');
+</code>
+        </pre>
+    </ol>
+</main>
+
+<footer>
+    <p>&copy; 2024 Full Stack Development Lab Manual</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
